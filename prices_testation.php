@@ -7,12 +7,46 @@
         border-color: none;
     }
 
+    input[type=range] {
+        -webkit-appearance: none;
+        margin: 10px 0;
+        width: 100%;
+        background: none;
+        border: none;
+    }
+
+    input[type=range]:focus {
+        outline: none;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 12.8px;
+        cursor: pointer;
+        background: #BCACEB;
+        border-radius: 25px;
+        border: 0px solid #000101;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        height: 20px;
+        width: 39px;
+        background: #65001c;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -3.6px;
+    }
+    input[type=range]::-webkit-slider-thumb:hover{
+        transition: 1s ease-in;
+        background: darkred;
+    }
+
     form {
-        background: #3b459e;
+        background: #3E248C;
         padding: 4%;
-        border: 8px solid #0a99d1;
+        border: 8px solid #200C5B;
         border-radius: 7.5px;
-        color: #0a99d1;
+        color: #8975C6;
         font-weight: bolder;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
@@ -26,10 +60,10 @@
         width: 10%;
         margin-left: 3%;
         border: none;
-        border-bottom: 3px solid #0a99d1;
+        border-bottom: 3px solid #8975C6;
         background: none;
         padding: 6px;
-        color: #0a99d1;
+        color: #8975C6;
         font-family: fantasy;
         margin: 0 2%;
     }
@@ -69,7 +103,7 @@
     }
 
     #output>p {
-        border: 5px solid lightsalmon;
+        border: 5px solid #200C5B;;
         display: flex;
     }
 
@@ -77,20 +111,21 @@
     #output>p span {
         padding: 2%;
         display: block;
-        border-bottom: 5px solid orangered;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     #output>p b {
-        background-color: lightsalmon;
+        background-color: #3E248C;
         width: 30%;
         text-align: right;
+        color: #886ED7;
     }
 
     #output>p span {
         width: 70%;
         font-size: 1.2em;
         font-family: fantasy;
+        color: #200C5B;
     }
 
 
@@ -110,6 +145,7 @@
     .prices table thead th:first-of-type {
         width: 4vw;
     }
+
     .prices table th {
         background: #886ED7;
         color: white;
@@ -117,17 +153,38 @@
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
-    .nr_criteria_styles{
+    .nr_criteria_styles {
         font-size: 2em;
         text-align: center;
         font-weight: bold;
     }
+
     .prices table td {
         font-size: 1.1em;
     }
 
-    .prices table td:nth-child(2) {
+    .prices table td:nth-child(2),.prices table td:nth-child(3),.prices table td:nth-child(4) {
         text-align: center;
+    }
+
+    .info_range_slider {
+        justify-content: space-between;
+    }
+    .info_range_slider span{
+        padding: 0 1.2vw;
+        font-size: 1.1em;
+        position: relative;
+    }
+    .info_range_slider span:before{
+        content: "|";
+        position: absolute;
+        top: -2.3vh;
+        right: 2.1vw;
+    }
+    .info_range_slider span:hover{
+        cursor: pointer;
+        transition: 1s ease;
+        color: #65001c;
     }
 </style>
 
@@ -181,19 +238,32 @@
                 <p>tractor</p>
             </li>
         </ul>
-
+        <br>
         <form action="">
             <div>
                 <label for="maximum_authorized_mass">Masa maximă autorizată</label>
                 <input type="text" placeholder="0" id="input_mass" maxlength="5">
             </div>
             <input class="range_slider" type="range" name="maximum_authorized_mass" class="slider" id="maximum_authorized_mass" min="0" max="20000">
-
+            <div class="info_range_slider">
+                <span onclick="set_value_click_maximum_authorized_mass(0)">0</span>
+                <span onclick="set_value_click_maximum_authorized_mass(5000)">5000</span>
+                <span onclick="set_value_click_maximum_authorized_mass(10000)">10000</span>
+                <span onclick="set_value_click_maximum_authorized_mass(15000)">15000</span>
+                <span onclick="set_value_click_maximum_authorized_mass(20000)">20000</span>
+            </div>
+            <br>
+            <br>
             <div>
                 <label for="cylindrical_capacity">Capacitatea cilindrica</label>
                 <input type="text" placeholder="0" maxlength="4" id="input_cylindrical">
             </div>
             <input class="range_slider" type="range" name="maximum_authorized_mass" class="slider" id="cylindrical_capacity" min="0" max="5000">
+            <div class="info_range_slider">
+                <span onclick="set_value_click_cylindrical_capacity(0)">0</span>
+                <span onclick="set_value_click_cylindrical_capacity(2500)">2500</span>
+                <span  onclick="set_value_click_cylindrical_capacity(5000)">5000</span>
+            </div>
         </form>
 
         <br>
@@ -430,6 +500,7 @@
         document.title = "Calculator Revizie tehnică și impozit rutier";
 
         maximum_authorized_mass = document.getElementById("maximum_authorized_mass");
+        set_value_click_maximum_authorized_mass(0);
         input_mass = document.getElementById("input_mass");
 
         input_mass.onkeyup = function set_mass() {
@@ -439,10 +510,14 @@
         maximum_authorized_mass.oninput = function printResult() {
             input_mass.value = this.value;
         }
-
+        function set_value_click_maximum_authorized_mass(number){
+            maximum_authorized_mass.value = number;
+            input_mass.value = number;
+        }
         //===================================================================================
 
         cylindrical_capacity = document.getElementById("cylindrical_capacity");
+        set_value_click_cylindrical_capacity(0);
         input_cylindrical = document.getElementById("input_cylindrical");
 
         input_cylindrical.onkeyup = function set_mass() {
@@ -451,6 +526,10 @@
 
         cylindrical_capacity.oninput = function printResult() {
             input_cylindrical.value = this.value;
+        }
+        function set_value_click_cylindrical_capacity(number){
+            cylindrical_capacity.value = number;
+            input_cylindrical.value = number;
         }
     </script>
     <br><br>
