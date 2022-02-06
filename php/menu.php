@@ -1,11 +1,11 @@
 <nav id="menu">
     <a id="logo" href="index.php">Testare Auto</a>
     <ul>
-        <li><a href="#company_services">Serviciile noastre</a></li>
-        <li><a href="#about_company">Despre noi</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#company_news">Noutati</a></li>
-        <li><a href="#contact_company">Contacteaza-ne</a></li>
+        <li><a href="index.php#company_services">Serviciile noastre</a></li>
+        <li><a href="index.php#about_company">Despre noi</a></li>
+        <li><a href="index.php#galeria">Galeria</a></li>
+        <li><a href="index.php#company_news">Noutati</a></li>
+        <li><a href="index.php#contact_company">Contacteaza-ne</a></li>
     </ul>
     <?php
     if (isset($_SESSION['login']))
