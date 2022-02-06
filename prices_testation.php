@@ -87,6 +87,34 @@
         font-size: 1.2em;
         font-family: fantasy;
     }
+
+
+    .table_delimiter{
+        border-bottom: 3px solid #886ED7;
+    }
+    .prices table th, .prices table td{
+        padding: 1.5%;
+    }
+    .prices table {
+        border-collapse: collapse;
+        border: 4px solid #886ED7;
+        width: 70%;
+        margin: 0 auto;
+    }
+    .prices table th{
+        background: #886ED7;
+        color: white;
+        font-size: 1.3em;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .prices table td{
+        font-weight: bolder;
+        font-size: 1.1em;
+    }
+    .prices table td:nth-child(2){
+        text-align: center;
+        border-left: 4px solid #886ED7;
+    }
 </style>
 
 <body>
@@ -160,6 +188,50 @@
             <p><b>Taxa pentru testarea tehnică:</b> <span>0</span></p>
             <p><b>Taxa pentru folosirea drumurilor:</b> <span>0</span></p>
         </article>
+    </section>
+    <br>
+    <br>
+    <section class="center_content prices">
+        <table>
+            <tr>
+                <th>Toate categoriile de vehicule cu masa totală indicată în certificatul de înmatriculare, kg	</th>
+                <th>Suma taxei, lei/unitate</th>
+            </tr>
+            <tr class="table_delimiter">
+                <td>Motociclete</td>
+                <td>50</td>
+            </tr>
+
+            <tr>
+                <td>Pînă la 2000kg inclusiv</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>De la 2001kg la 3500kg inclusiv	</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>De la 3501kg la 10000kg inclusiv</td>
+                <td>250</td>
+            </tr>
+
+            <tr>
+                <td>De la 10001kg la 20000kg inclusiv</td>
+                <td>300</td>
+            </tr>
+            <tr class="table_delimiter">
+                <td>De peste 20000kg</td>
+                <td>350</td>
+            </tr>
+            <tr>
+                <td>Remorci şi semiremorci pînă la 1000kg inclusiv</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Remorci şi semiremorci de peste 1000kg</td>
+                <td>150</td>
+            </tr>
+        </table>
     </section>
 
     <script>
