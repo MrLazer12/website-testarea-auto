@@ -1,20 +1,29 @@
 document.title = "Calculator Revizie tehnică și impozit rutier";
 
 authorized_mass_buttons = document.getElementById("authorized_mass_buttons");
-maximum_authorized_mass = document.getElementById("maximum_authorized_mass");
+maximum_authorized_mass = document.getElementById("range_slider_maximum_authorized_mass");
 set_value_click_maximum_authorized_mass(0);
 input_mass = document.getElementById("input_mass");
-
+//----------------------------------------------------------------------------------------
 cylindrical_capacity_buttons = document.getElementById("cylindrical_capacity_buttons");
-cylindrical_capacity = document.getElementById("cylindrical_capacity");
+cylindrical_capacity = document.getElementById("range_slider_cylindrical_capacity");
 set_value_click_cylindrical_capacity(0);
 input_cylindrical = document.getElementById("input_cylindrical");
-
+//----------------------------------------------------------------------------------------
 span_testation_price = document.getElementById("testation_price");
 span_price_roads = document.getElementById("price_roads");
 
 max_places_in_buss = document.getElementById("max_places_in_buss");
 own_mass = document.getElementById("own_mass");
+//----------------------------------------------------------------------------------------
+range_slider_own_mass = document.getElementById("range_slider_own_mass");
+input_own_mass = document.getElementById("input_own_mass");
+//----------------------------------------------------------------------------------------
+input_places_in_buss = document.getElementById("input_places_in_buss");
+range_slider_places_in_buss = document.getElementById("range_slider_places_in_buss");
+//----------------------------------------------------------------------------------------
+
+
 //=====================================================================================
 //check which category is selected
 li_svg = document.querySelectorAll("#category_select > li svg");
@@ -121,7 +130,6 @@ function change_elements_in_form(){
 
 
 //===================================================================================
-
 input_mass.onkeyup = function set_mass() {
     maximum_authorized_mass.value = input_mass.value;
 }
@@ -136,8 +144,6 @@ function set_value_click_maximum_authorized_mass(number) {
 }
 //===================================================================================
 
-
-
 //===================================================================================
 input_cylindrical.onkeyup = function set_mass() {
     cylindrical_capacity.value = input_cylindrical.value;
@@ -150,5 +156,35 @@ cylindrical_capacity.oninput = function printResult() {
 function set_value_click_cylindrical_capacity(number) {
     cylindrical_capacity.value = number;
     input_cylindrical.value = number;
+}
+//=====================================================================================
+
+//=====================================================================================
+input_own_mass.onkeyup = function set_own_mass() {
+    range_slider_own_mass.value = input_own_mass.value;
+}
+
+range_slider_own_mass.oninput = function print_own_mass() {
+    input_own_mass.value = this.value;
+}
+
+function set_value_click_range_slider_own_mass(number) {
+    range_slider_own_mass.value = number;
+    input_own_mass.value = number;
+}
+//=====================================================================================
+
+//=====================================================================================
+input_places_in_buss.onkeyup = function set_places_in_buss() {
+    range_slider_places_in_buss.value = input_places_in_buss.value;
+}
+
+range_slider_places_in_buss.oninput = function print_places_in_buss() {
+    input_places_in_buss.value = this.value;
+}
+
+function set_value_click_range_slider_places_in_buss(number) {
+    range_slider_places_in_buss.value = number;
+    input_places_in_buss.value = number;
 }
 //=====================================================================================

@@ -272,10 +272,10 @@
         <form id="form_buttons_range_slider" action="">
             <article id="authorized_mass_buttons">
                 <div>
-                    <label for="maximum_authorized_mass">Masa maximă autorizată</label>
+                    <label for="range_slider_maximum_authorized_mass">Masa maximă autorizată</label>
                     <input type="text" placeholder="0" id="input_mass" maxlength="5">
                 </div>
-                <input class="range_slider" type="range" name="maximum_authorized_mass" class="slider" id="maximum_authorized_mass" min="0" max="20000">
+                <input class="range_slider" type="range" name="maximum_authorized_mass" class="slider" id="range_slider_maximum_authorized_mass" min="0" max="20000">
                 <div class="info_range_slider">
                     <span onclick="set_value_click_maximum_authorized_mass(0)">0</span>
                     <span onclick="set_value_click_maximum_authorized_mass(5000)">5000</span>
@@ -289,10 +289,10 @@
             
             <article id="cylindrical_capacity_buttons">
                 <div>
-                    <label for="cylindrical_capacity">Capacitatea cilindrica</label>
+                    <label for="range_slider_cylindrical_capacity">Capacitatea cilindrica</label>
                     <input type="text" placeholder="0" maxlength="4" id="input_cylindrical">
                 </div>
-                <input class="range_slider" type="range" name="cylindrical_capacity" class="slider" id="cylindrical_capacity" min="0" max="5000">
+                <input class="range_slider" type="range" name="cylindrical_capacity" class="slider" id="range_slider_cylindrical_capacity" min="0" max="5000">
                 <div class="info_range_slider">
                     <span onclick="set_value_click_cylindrical_capacity(0)">0</span>
                     <span onclick="set_value_click_cylindrical_capacity(2500)">2500</span>
@@ -306,11 +306,11 @@
                     <label for="places_in_buss">numărul de locuri (fără locul şoferului)</label>
                     <input type="text" placeholder="0" maxlength="2" id="input_places_in_buss">
                 </div>
-                <input class="range_slider" type="range" name="places_in_buss" class="slider" id="range_slider_places_in_buss" min="0" max="5000">
+                <input class="range_slider" type="range" name="places_in_buss" class="slider" id="range_slider_places_in_buss" min="0" max="100">
                 <div class="info_range_slider">
-                    <span onclick="set_value_click_cylindrical_capacity(0)">1</span>
-                    <span onclick="set_value_click_cylindrical_capacity(4)">4</span>
-                    <span onclick="set_value_click_cylindrical_capacity(5)">5</span>
+                    <span onclick="set_value_click_range_slider_places_in_buss(1)">1</span>
+                    <span onclick="set_value_click_range_slider_places_in_buss(11)">11</span>
+                    <span onclick="set_value_click_range_slider_places_in_buss(45)">45</span>
                 </div>
             </article>
 
@@ -318,13 +318,13 @@
                 <br></br>
                 <div>
                     <label for="input_own_mass">masa proprie</label>
-                    <input type="text" placeholder="0" maxlength="2" id="input_own_mass">
+                    <input type="text" placeholder="0" maxlength="5" id="input_own_mass">
                 </div>
-                <input class="range_slider" type="range" name="range_slider_own_mass" class="slider" id="range_slider_own_mass" min="0" max="5000">
+                <input class="range_slider" type="range" name="range_slider_own_mass" class="slider" id="range_slider_own_mass" min="0" max="12000">
                 <div class="info_range_slider">
-                    <span onclick="set_value_click_cylindrical_capacity(0)">1</span>
-                    <span onclick="set_value_click_cylindrical_capacity(4)">4</span>
-                    <span onclick="set_value_click_cylindrical_capacity(5)">5</span>
+                    <span onclick="set_value_click_range_slider_own_mass(0)">1</span>
+                    <span onclick="set_value_click_range_slider_own_mass(4)">4</span>
+                    <span onclick="set_value_click_range_slider_own_mass(5)">5</span>
                 </div>
             </article>
         </form>
