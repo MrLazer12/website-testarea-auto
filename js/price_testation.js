@@ -2,32 +2,33 @@ document.title = "Calculator Revizie tehnică și impozit rutier";
 
 authorized_mass_buttons = document.getElementById("authorized_mass_buttons");
 maximum_authorized_mass = document.getElementById("range_slider_maximum_authorized_mass");
-set_value_click_maximum_authorized_mass(0);
 input_mass = document.getElementById("input_mass");
+set_value_click_maximum_authorized_mass(0);
 //----------------------------------------------------------------------------------------
 cylindrical_capacity_buttons = document.getElementById("cylindrical_capacity_buttons");
 cylindrical_capacity = document.getElementById("range_slider_cylindrical_capacity");
-set_value_click_cylindrical_capacity(0);
 input_cylindrical = document.getElementById("input_cylindrical");
+set_value_click_cylindrical_capacity(0);
 //----------------------------------------------------------------------------------------
-span_testation_price = document.getElementById("testation_price");
-span_price_roads = document.getElementById("price_roads");
-
-max_places_in_buss = document.getElementById("max_places_in_buss");
 own_mass = document.getElementById("own_mass");
-//----------------------------------------------------------------------------------------
 range_slider_own_mass = document.getElementById("range_slider_own_mass");
 input_own_mass = document.getElementById("input_own_mass");
+set_value_click_range_slider_own_mass(0);
 //----------------------------------------------------------------------------------------
+max_places_in_buss = document.getElementById("max_places_in_buss");
 input_places_in_buss = document.getElementById("input_places_in_buss");
 range_slider_places_in_buss = document.getElementById("range_slider_places_in_buss");
+set_value_click_range_slider_places_in_buss(0);
 //----------------------------------------------------------------------------------------
 
-
+info_range_sliders = document.getElementsByClassName("info_range_slider");
 //=====================================================================================
 //check which category is selected
 li_svg = document.querySelectorAll("#category_select > li svg");
 form_buttons_range_slider = document.getElementById("form_buttons_range_slider");
+
+span_testation_price = document.getElementById("testation_price");
+span_price_roads = document.getElementById("price_roads");
 
 function change_to_active(index) {
     for (let i = 0; i < li_svg.length; i++)
@@ -64,6 +65,8 @@ function change_elements_in_form(){
 
             span_testation_price.innerHTML = 0;
             span_price_roads.innerHTML = 0;
+
+            add_buttons_to_rangeSlider(30000,"range_slider_maximum_authorized_mass", "set_value_click_maximum_authorized_mass", 0, 0, 35000, 5000);
             break;
         }
         
@@ -74,6 +77,8 @@ function change_elements_in_form(){
             authorized_mass_buttons.style.display = "none";
             max_places_in_buss.style.display = "none";
             own_mass.style.display = "none";
+
+            add_buttons_to_rangeSlider(500,"range_slider_cylindrical_capacity", "set_value_click_cylindrical_capacity", 1, 0, 1000, 500);
             break;
         }
 
@@ -84,6 +89,9 @@ function change_elements_in_form(){
             max_places_in_buss.style.display = "block";
             cylindrical_capacity_buttons.style.display = "none";
             own_mass.style.display = "none";
+
+            add_buttons_to_rangeSlider(30000,"range_slider_maximum_authorized_mass", "set_value_click_maximum_authorized_mass", 0, 0, 35000, 5000);
+            add_buttons_to_rangeSlider(120,"range_slider_places_in_buss", "set_value_click_range_slider_places_in_buss", 2, 0, 125, 15);
             break;
         }
 
@@ -94,6 +102,8 @@ function change_elements_in_form(){
             cylindrical_capacity_buttons.style.display = "none";
             max_places_in_buss.style.display = "none";
             own_mass.style.display = "none";
+
+            add_buttons_to_rangeSlider(30000,"range_slider_maximum_authorized_mass", "set_value_click_maximum_authorized_mass", 0, 0, 35000, 5000);
             break;
         }
 
@@ -104,6 +114,8 @@ function change_elements_in_form(){
             cylindrical_capacity_buttons.style.display = "none";
             max_places_in_buss.style.display = "none";
             own_mass.style.display = "none";
+
+            add_buttons_to_rangeSlider(100000,"range_slider_maximum_authorized_mass", "set_value_click_maximum_authorized_mass", 0, 0, 105000, 10000);
             break;
         }
 
@@ -114,6 +126,9 @@ function change_elements_in_form(){
             own_mass.style.display = "block";
             cylindrical_capacity_buttons.style.display = "none";
             max_places_in_buss.style.display = "none";
+
+            add_buttons_to_rangeSlider(100000,"range_slider_maximum_authorized_mass", "set_value_click_maximum_authorized_mass", 0, 0, 105000, 10000);
+            add_buttons_to_rangeSlider(12000,"range_slider_own_mass", "set_value_click_range_slider_own_mass", 3, 0, 13000, 1000);
             break;
         }
 
@@ -128,14 +143,35 @@ function change_elements_in_form(){
 }
 //===================================================================================
 
+//===================================================================================
+function add_buttons_to_rangeSlider(max_rangeSlider_value, name_rangeSlider, name_functionOF_rangeSlider, index_class___info_range_slider, rangeSTART, rangeEND, incrementation) {
+    //setting max lenght of range slider
+    document.getElementById(name_rangeSlider).setAttribute("max",max_rangeSlider_value);
+
+    // deleting all child elements of element info_range_sliders
+    info_range_sliders[index_class___info_range_slider].innerHTML = '';
+    
+    //creating the next structure of span => in order to insert in range slider
+    //<span onclick="set_value_click_range_slider_own_mass(0)">1</span>
+    for (let i = rangeSTART; i < rangeEND; i+=incrementation) {
+        span = document.createElement("span");
+        span.setAttribute("onclick",name_functionOF_rangeSlider+"("+i+")");
+        span.innerHTML = i;
+        info_range_sliders[index_class___info_range_slider].appendChild(span);
+    }
+}
+//===================================================================================
+
 
 //===================================================================================
 input_mass.onkeyup = function set_mass() {
     maximum_authorized_mass.value = input_mass.value;
+    show_price_mass(input_mass.value, 0);
 }
 
 maximum_authorized_mass.oninput = function printResult() {
     input_mass.value = this.value;
+    show_price_mass(this.value, 0);
 }
 
 function set_value_click_maximum_authorized_mass(number) {
@@ -147,10 +183,12 @@ function set_value_click_maximum_authorized_mass(number) {
 //===================================================================================
 input_cylindrical.onkeyup = function set_mass() {
     cylindrical_capacity.value = input_cylindrical.value;
+    show_price_cylindricalCapacity(cylindrical_capacity.value);
 }
 
 cylindrical_capacity.oninput = function printResult() {
     input_cylindrical.value = this.value;
+    show_price_cylindricalCapacity(input_cylindrical.value);
 }
 
 function set_value_click_cylindrical_capacity(number) {
@@ -186,5 +224,51 @@ range_slider_places_in_buss.oninput = function print_places_in_buss() {
 function set_value_click_range_slider_places_in_buss(number) {
     range_slider_places_in_buss.value = number;
     input_places_in_buss.value = number;
+}
+//=====================================================================================
+
+//=====================================================================================
+function show_price_mass(price_testation,price_roads){
+    final_price_testation=0;
+    final_price_roads=1;
+
+    //set price testation
+    if(price_testation<=2000){
+        final_price_testation=150;
+    } 
+    else if(price_testation>=2001 && price_testation<=3500){
+        final_price_testation=200;
+    }
+    else if(price_testation>=3501 && price_testation<=10000){
+        final_price_testation=250;
+    }
+    else if(price_testation>=10001 && price_testation<=20000){
+        final_price_testation=300;
+    }
+    else if(price_testation>=20000){
+        final_price_testation=350;
+    }
+
+    span_testation_price.innerHTML = final_price_testation+" lei";
+}
+function show_price_cylindricalCapacity(price_roads){
+    //set price testation
+    if(price_roads<=2000){
+        price_roads*=0.60;
+    } 
+    else if(price_roads>=2001 && price_roads<=3500){
+        price_roads*=0.90;
+    }
+    else if(price_roads>=3501 && price_roads<=10000){
+        price_roads*=1.20;
+    }
+    else if(price_roads>=10001 && price_roads<=20000){
+        price_roads*=1.50;
+    }
+    else if(price_roads>=20000){
+        price_roads*=1.80;
+    }
+
+    span_price_roads.innerHTML = price_roads+" lei";
 }
 //=====================================================================================

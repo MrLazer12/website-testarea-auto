@@ -272,7 +272,7 @@
         <form id="form_buttons_range_slider" action="">
             <article id="authorized_mass_buttons">
                 <div>
-                    <label for="range_slider_maximum_authorized_mass">Masa maximă autorizată</label>
+                    <label for="range_slider_maximum_authorized_mass">Masa maximă autorizată - kg</label>
                     <input type="text" placeholder="0" id="input_mass" maxlength="5">
                 </div>
                 <input class="range_slider" type="range" name="maximum_authorized_mass" class="slider" id="range_slider_maximum_authorized_mass" min="0" max="20000">
@@ -289,7 +289,7 @@
             
             <article id="cylindrical_capacity_buttons">
                 <div>
-                    <label for="range_slider_cylindrical_capacity">Capacitatea cilindrica</label>
+                    <label for="input_cylindrical">Capacitatea cilindrica - cm<sup>3</sup></label>
                     <input type="text" placeholder="0" maxlength="4" id="input_cylindrical">
                 </div>
                 <input class="range_slider" type="range" name="cylindrical_capacity" class="slider" id="range_slider_cylindrical_capacity" min="0" max="5000">
@@ -305,12 +305,13 @@
                 <div>
                     <label for="places_in_buss">numărul de locuri (fără locul şoferului)</label>
                     <input type="text" placeholder="0" maxlength="2" id="input_places_in_buss">
+
                 </div>
                 <input class="range_slider" type="range" name="places_in_buss" class="slider" id="range_slider_places_in_buss" min="0" max="100">
                 <div class="info_range_slider">
-                    <span onclick="set_value_click_range_slider_places_in_buss(1)">1</span>
-                    <span onclick="set_value_click_range_slider_places_in_buss(11)">11</span>
-                    <span onclick="set_value_click_range_slider_places_in_buss(45)">45</span>
+                    <span onclick="set_value_click_range_slider_places_in_buss(0)">0</span>
+                    <span onclick="set_value_click_range_slider_places_in_buss(50)">50</span>
+                    <span onclick="set_value_click_range_slider_places_in_buss(100)">100</span>
                 </div>
             </article>
 
