@@ -47,7 +47,7 @@
         background: darkred;
     }
 
-    form {
+    form#form_buttons_range_slider {
         background: #3E248C;
         padding: 4%;
         border: 8px solid #200C5B;
@@ -57,12 +57,12 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
-    form>div {
+    form#form_buttons_range_slider>div {
         display: flex;
         align-items: center;
     }
 
-    form div>input[type=text] {
+    form#form_buttons_range_slider div>input[type=text] {
         width: 10%;
         margin-left: 3%;
         border: none;
@@ -103,7 +103,7 @@
     }
 
     ul#category_select>li:hover svg,
-    .selected_category {
+    ul#category_select>li .selected_category {
         transition: 1s ease-in;
         background: #422C83 !important;
         color: #AF66D5 !important;
@@ -153,12 +153,14 @@
         margin: 0 auto;
         background: white;
     }
-    .prices table caption{
+
+    .prices table caption {
         background: blueviolet;
         color: white;
         padding: 1.8vw;
         font-size: 1.3em;
     }
+
     .prices table thead th:first-of-type {
         width: 4vw;
     }
@@ -190,15 +192,18 @@
         display: flex;
         justify-content: space-between;
     }
+
     .info_range_slider span {
         padding: 0;
         font-size: 1.1em;
         position: relative;
     }
-    .info_range_slider span:first-of-type{
+
+    .info_range_slider span:first-of-type {
         padding-left: 2vw;
     }
-    .info_range_slider span:last-of-type{
+
+    .info_range_slider span:last-of-type {
         padding-right: 0;
     }
 
@@ -208,9 +213,11 @@
         top: -2.3vh;
         left: 1vw;
     }
-    .info_range_slider span:last-of-type::before{
+
+    .info_range_slider span:last-of-type::before {
         right: 0.5vw;
     }
+
     .info_range_slider span:hover {
         cursor: pointer;
         transition: 1s ease;
@@ -221,8 +228,10 @@
 <body>
     <header>
         <?php include "php/menu.php"; ?>
+        <?php include "php/login_register_forms.php"; ?>
     </header>
     <br><br><br><br><br>
+    <p>NUI CORECT ABSOLUT DELOC</p>
     <section class="center_content">
         <ul id="category_select">
             <li onclick="change_to_active(0)">
@@ -286,7 +295,7 @@
                 <br>
                 <br>
             </article>
-            
+
             <article id="cylindrical_capacity_buttons">
                 <div>
                     <label for="input_cylindrical">Capacitatea cilindrica - cm<sup>3</sup></label>
@@ -498,7 +507,12 @@
 
                 <tr>
                     <td rowspan="5" class="nr_criteria_styles">6</td>
-                    <td colspan="3"><b>Autocamioane, autovehicule pentru utilizări speciale pe şasiu de autocamion, orice alte autovehicule cu autopropulsie, cu masa totală:</b></td>
+                    <td colspan="3">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="truck-moving" class="svg-inline--fa fa-truck-moving fa-w-20 selected_category" role="img" viewBox="0 0 640 512">
+                            <path fill="currentColor" d="M621.3 237.3l-58.5-58.5c-12-12-28.3-18.7-45.3-18.7H480V64c0-17.7-14.3-32-32-32H32C14.3 32 0 46.3 0 64v336c0 44.2 35.8 80 80 80 26.3 0 49.4-12.9 64-32.4 14.6 19.6 37.7 32.4 64 32.4 44.2 0 80-35.8 80-80 0-5.5-.6-10.8-1.6-16h163.2c-1.1 5.2-1.6 10.5-1.6 16 0 44.2 35.8 80 80 80s80-35.8 80-80c0-5.5-.6-10.8-1.6-16H624c8.8 0 16-7.2 16-16v-85.5c0-17-6.7-33.2-18.7-45.2zM80 432c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm128 0c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm272-224h37.5c4.3 0 8.3 1.7 11.3 4.7l43.3 43.3H480v-48zm48 224c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"></path>
+                        </svg>
+                        <b>Autocamioane, autovehicule pentru utilizări speciale pe şasiu de autocamion, orice alte autovehicule cu autopropulsie, cu masa totală:</b>
+                    </td>
                 </tr>
                 <tr>
                     <td>a) de pînă la 1,6 t inclusiv</td>
@@ -562,6 +576,7 @@
         </table>
     </section>
 
+    <script src="js/login_register_form_logic.js"></script>
     <script src="js/price_testation.js"></script>
     <br><br>
     <a href="https://rapidasig.md/informatii-utile/testare-tehnica-taxa-drumuri">Sursa de inspirare</a>
