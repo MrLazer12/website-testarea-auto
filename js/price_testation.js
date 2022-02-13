@@ -166,34 +166,36 @@ function add_buttons_to_rangeSlider(max_rangeSlider_value, name_rangeSlider, nam
 //===================================================================================
 input_mass.onkeyup = function set_mass() {
     maximum_authorized_mass.value = input_mass.value;
-    show_price_mass(input_mass.value, 0);
+    show_price_mass(input_mass.value, 'testation_price');
 }
 
 maximum_authorized_mass.oninput = function printResult() {
     input_mass.value = this.value;
-    show_price_mass(this.value, 0);
+    show_price_mass(this.value, 'testation_price');
 }
 
 function set_value_click_maximum_authorized_mass(number) {
     maximum_authorized_mass.value = number;
     input_mass.value = number;
+    show_price_mass(input_mass.value, 'testation_price');
 }
 //===================================================================================
 
 //===================================================================================
 input_cylindrical.onkeyup = function set_mass() {
     cylindrical_capacity.value = input_cylindrical.value;
-    show_price_cylindricalCapacity(cylindrical_capacity.value);
+    show_price_cylindricalCapacity(cylindrical_capacity.value,'price_roads');
 }
 
 cylindrical_capacity.oninput = function printResult() {
     input_cylindrical.value = this.value;
-    show_price_cylindricalCapacity(input_cylindrical.value);
+    show_price_cylindricalCapacity(input_cylindrical.value,'price_roads');
 }
 
 function set_value_click_cylindrical_capacity(number) {
     cylindrical_capacity.value = number;
     input_cylindrical.value = number;
+    show_price_cylindricalCapacity(input_cylindrical.value,'price_roads');
 }
 //=====================================================================================
 
@@ -215,24 +217,25 @@ function set_value_click_range_slider_own_mass(number) {
 //=====================================================================================
 input_places_in_buss.onkeyup = function set_places_in_buss() {
     range_slider_places_in_buss.value = input_places_in_buss.value;
+    show_price_by_max_places_in_buss(range_slider_places_in_buss.value,'price_roads');
 }
 
 range_slider_places_in_buss.oninput = function print_places_in_buss() {
     input_places_in_buss.value = this.value;
+    show_price_by_max_places_in_buss(this.value,'price_roads');
 }
 
 function set_value_click_range_slider_places_in_buss(number) {
     range_slider_places_in_buss.value = number;
     input_places_in_buss.value = number;
+    show_price_by_max_places_in_buss(number,'price_roads');
 }
 //=====================================================================================
 
 //=====================================================================================
-function show_price_mass(price_testation,price_roads){
+function show_price_mass(price_testation,span_id){
     final_price_testation=0;
-    final_price_roads=1;
 
-    //set price testation
     if(price_testation<=2000){
         final_price_testation=150;
     } 
@@ -249,10 +252,9 @@ function show_price_mass(price_testation,price_roads){
         final_price_testation=350;
     }
 
-    span_testation_price.innerHTML = final_price_testation+" lei";
+    document.getElementById(span_id).innerHTML = final_price_testation+" lei";
 }
-function show_price_cylindricalCapacity(price_roads){
-    //set price testation
+function show_price_cylindricalCapacity(price_roads,span_id){
     if(price_roads<=2000){
         price_roads*=0.60;
     } 
@@ -269,6 +271,25 @@ function show_price_cylindricalCapacity(price_roads){
         price_roads*=1.80;
     }
 
-    span_price_roads.innerHTML = price_roads+" lei";
+    document.getElementById(span_id).innerHTML = price_roads+" lei";
+}
+function show_price_by_max_places_in_buss(price,span_id){
+    if(price<=11){
+        price=2925;
+    } 
+    else if(price>=12 && price<=17){
+        price=3600;
+    }
+    else if(price>=18 && price<=24){
+        price=4275;
+    }
+    else if(price>=25 && price<=40){
+        price=4725;
+    }
+    else if(price>=40){
+        price=5400;
+    }
+
+    document.getElementById(span_id).innerHTML = price+" lei";
 }
 //=====================================================================================
